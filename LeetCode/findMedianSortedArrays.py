@@ -1,3 +1,5 @@
+#Idea:
+
 class Solution(object):
     def findMedianSortedArrays(self, nums1, nums2):
         """
@@ -7,13 +9,22 @@ class Solution(object):
         """
         l1, l2 = len(nums1), len(nums2)
 
+        # Step:1 find out the array with less number of items than other
         if l1 > l2:
             return self.findMedianSortedArrays(nums2, nums1)
 
         isodd = True if (len(nums1) + len(nums2)) % 2 != 0 else False
 
+        # Step:2 define length of minimum length array (l1) as high
         low = 0
         high = l1
+
+        # Step:3 while low reached to length of the array, do following
+        #   partition x = (low+high)/2
+        #   partition y  = (l1 + l2 + 1) // 2 - partx
+        # define :
+        # l1max,r2min, l2max, r1min
+        # until found the scenario where l1max <= r2min and l2max <= r1min
 
         while low <= high:
 
